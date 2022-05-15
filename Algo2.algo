@@ -1,0 +1,86 @@
+// SOLUTION 1
+ALGORITHM Algo2
+VAR
+    tab1,tab2 : ARRAY_OF INTEGER;
+    n1,n2,sum1,i,j : INTEGER;
+    test1 : BOOLEAN;
+
+BEGIN
+    // recuperation du taille de tableau
+    REPEAT
+        read(n1);
+    UNTIL (n1:INTEGER)
+    REPEAT
+        read(n2);
+    UNTIL (n2:INTEGER)
+    // Remplissage des tabs
+    FOR i FROM 0 TO n1-1 STEP step  DO
+        write("donnez un entier");
+        read(tab1[i]);
+    END_FOR
+    FOR j FROM 0 TO n2-1 STEP step  DO
+        write("donnez un entier");
+        read(tab2[i]);
+    END_FOR
+    // traitement du tabs
+    FOR i FROM 0 TO n1-1 STEP step  DO
+       FOR j FROM 0 TO n2-1 STEP step  DO
+            IF (tab1[i]==tab2[j]) THEN
+                test1:=1;
+             ELSE
+                test1:=0;
+            END_IF
+       END_FOR
+       IF (test==0) THEN
+           sum1:=sum1+tab1[i];
+       END_IF
+       
+    END_FOR
+    write(sum1);
+END
+
+
+
+// SOLUTION2
+ALGORITHM Halgo2
+VAR
+    htab1 : HASH_TABLE<INTEGER,INTEGER>;
+    htab2 : HASH_TABLE<INTEGER,INTEGER>;
+    i,j,nh1,nh2,x1,x2,z,w,sum : INTEGER;
+    test : BOOLEAN;
+BEGIN
+    // REMPLISSAGE DE DEUX HHASH-TABLE
+    REPEAT
+        write("donnez la taille du premier tableau");
+        read(nh1);
+        write("donnez la taille du deuxiemme tableau");
+        read(nh2);
+
+    UNTIL ((nh1 : INTEGER)&&(nh2 : INTEGER))
+
+    FOR i FROM 0 TO nh1-1 STEP step  DO
+        read(x1);
+        htab1.insert(i,x1);
+    END_FOR
+    FOR j FROM 0 TO nh2-1 STEP step  DO
+        read(x2);
+        htab2.insert(j,x2);
+    END_FOR
+
+    // TRAITEMENT DU PROBLEME
+    FOR i FROM 0 TO nh1-1 STEP step  DO
+        FOR j FROM 0 TO nh2-1 STEP step  DO
+            z:=htab1.get(i);
+            w:=htab2.get(j);
+            IF (z==w) THEN
+                test:=1;
+                ELSE
+                test:=0;
+            END_IF
+        END_FOR
+        IF (test==0) THEN
+            sum:=sum+z;
+        END_IF
+    END_FOR
+    write(sum);
+END
